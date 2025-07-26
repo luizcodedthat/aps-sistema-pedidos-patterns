@@ -4,43 +4,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-    private Cliente cliente;
-    private List<ItemPedido> itens;
+    private final Cliente cliente;
+    private final List<ItemPedido> itens = new ArrayList<>();
     private double frete;
 
-    public Pedido(Cliente cliente) {
+    private Pedido(Cliente cliente) {
         this.cliente = cliente;
-        this.itens = new ArrayList<>();
     }
 
-    public void adicionarItem(Produto produto, int quantidade) {
-        itens.add(new ItemPedido(produto, quantidade));
+    public static class Builder {
+        private final Pedido pedido;
+        public Builder(Cliente cliente) {
+            pedido = new Pedido(cliente);
+        }
+        public Builder comItem(Produto p, int qtd) {
+            pedido.itens.add(new ItemPedido(p, qtd));
+            return this;
+        }
+        public Pedido build() {
+            if (pedido.itens.isEmpty())
+                throw new IllegalStateException("Pedido sem itens");
+            return pedido;
+        }
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getCliente()   {
+    	return cliente;
     }
-
+    
     public List<ItemPedido> getItens() {
-        return itens;
+    	return List.copyOf(itens);
+    
     }
-
-    public double getTotal() {
-        return itens.stream().mapToDouble(ItemPedido::getTotal).sum();
-    }
-
+    
     public void setFrete(double frete) {
-        this.frete = frete;
+    	this.frete = frete;
     }
-
+    
     public double getFrete() {
-        return frete;
+    	return frete;
     }
 
     public double getTotalComFrete() {
         return getTotal() + frete;
     }
-
+    
+    public double getTotal() {
+        return itens.stream().mapToDouble(ItemPedido::getTotal).sum();
+    }
+    
     public double getPesoTotal() {
         return itens.stream().mapToDouble(ItemPedido::getPesoTotal).sum();
     }

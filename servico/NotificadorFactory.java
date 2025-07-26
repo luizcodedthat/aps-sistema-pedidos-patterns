@@ -1,7 +1,7 @@
-package servico.notificacao;
+package servico;
 
 public class NotificadorFactory {
-    public static Notificador criarNotificador(String tipo) {
+    public static NotificadorStrategy criarNotificador(String tipo) {
         if (tipo.equalsIgnoreCase("email")) {
             return new NotificadorEmail();
         } else if (tipo.equalsIgnoreCase("sms")) {

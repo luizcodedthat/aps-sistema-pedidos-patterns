@@ -1,7 +1,7 @@
-package servico.notificacao;
+package servico;
 
 import modelo.Cliente;
 
-public interface Notificador {
+public interface NotificadorStrategy {
     void enviar(String mensagem, Cliente cliente);
 }

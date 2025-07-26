@@ -16,7 +16,7 @@ public class RelatorioJSON extends RelatorioBase {
     protected void montarCorpo(Pedido pedido) {
         int contador = 0;
         for (ItemPedido item : pedido.getItens()) {
-            System.out.println("    {\"nome\": \"" + item.getProduto().getNome() + "\", \"quantidade\": " + item.getQuantidade() + ", \"preco\": " + item.getSubtotal() + "}"
+            System.out.println("    {\"nome\": \"" + item.getProduto().getNome() + "\", \"quantidade\": " + item.getQuantidade() + ", \"preco\": " + item.getTotal() + "}"
                     + (contador < pedido.getItens().size() - 1 ? "," : ""));
             contador++;
         }
