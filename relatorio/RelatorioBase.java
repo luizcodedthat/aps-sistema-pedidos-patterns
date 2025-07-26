@@ -1,5 +1,7 @@
 package relatorio;
 
+import modelo.Pedido;
+
 public abstract class RelatorioBase {
     public final void gerar(Pedido pedido) {
         montarCabecalho(pedido);

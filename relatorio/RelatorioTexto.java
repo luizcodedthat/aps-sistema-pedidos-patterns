@@ -11,7 +11,7 @@ public class RelatorioTexto extends RelatorioBase {
 
     protected void montarCorpo(Pedido pedido) {
         pedido.getItens().forEach(item ->
-            System.out.println("- " + item.getProduto().getNome() + " (" + item.getQuantidade() + "x) - R$ " + item.getSubtotal())
+            System.out.println("- " + item.getProduto().getNome() + " (" + item.getQuantidade() + "x) - R$ " + item.getTotal())
         );
     }
 
