@@ -22,7 +22,7 @@ Criar um sistema com as seguintes funcionalidades:
 - **Java 21 (OpenJDK 21.0.5)**  
 - Paradigma: **Programação Orientada a Objetos**  
 - Interface: **Terminal (CLI)**  
-- Padrões aplicados: **Strategy, Factory, Singleton, MVC simplificado**  
+- Padrões aplicados: **Builder, Strategy, Factory, Singleton, Template Method, Arquitetura de Camadas**  
 
 ---
 
@@ -57,9 +57,16 @@ src/
 │   ├── NotificadorWhatsApp.java          → Notificação por WhatsApp
 │   └── NotificadorFactory.java           → Fábrica de notificadores
 │
-├── relatorio/                   → (Futuramente para relatórios, atualmente vazio)
-├── repositorio/                 → (Reservado para persistência futura)
-└── sistemaPedidos/              → Main.java (classe principal)
+├── relatorio/                   → Classes de montagem de relatório
+│   ├── RelatorioBase.java             
+│   ├── RelatorioJSON.java                
+│   ├── RelatorioTexto.java              
+|
+└── repositorio/                 → Persistência
+    ├── ClienteRepositorio.java  
+    ├── PedidoRepositorio.java     
+    ├── ProdutoRepositorio.java   
+    └── Repositorio.java  
 ```
 
 ---
@@ -121,10 +128,12 @@ Instancia o notificador apropriado conforme a seleção do usuário no terminal.
 
 | Padrão        | Aplicação                                    |
 |---------------|----------------------------------------------|
+| **Builder**  | Pedido (`Pedido`) |
 | **Strategy**  | Frete (`FreteCalculadoraStrategy`), Notificações (`NotificadorStrategy`) |
 | **Factory**   | `FreteFactory`, `NotificadorFactory`         |
 | **Singleton** | `ConsoleUI` (ponto central da interface)     |
-| **MVC (simples)** | Separação entre `modelo`, `servico` e `apresentacao` |
+| **Template Method**  | Relatório (`RelatorioBase`) |
+| **Arquitetura de Camadas (simples)** | Separação entre `modelo`, `servico` e `apresentacao` |
 
 
 
@@ -139,7 +148,7 @@ javac src/**/*.java
 
 ### Execução
 ```bash
-java sistemaPedidos.Main
+java apresentacao.ConsoleUI
 ```
 
 ### Fluxo principal:
@@ -154,7 +163,7 @@ java sistemaPedidos.Main
 
 ## 🔚 Conclusão
 
-Este projeto demonstra a aplicação prática de **padrões de projeto fundamentais** em um sistema de pedidos simples, organizado de forma clara e separando responsabilidades. Ele serve como excelente referência didática para o ensino de:
+Este projeto busca a aplicação prática de **padrões de projeto fundamentais** em um sistema de pedidos simples, organizado de forma clara e separando responsabilidades. Ele serve como forma de exposição a e aprendizado de:
 
 - Estratégias de extensão e manutenção de código  
 - Reutilização de lógica com fábricas e interfaces  
@@ -162,5 +171,5 @@ Este projeto demonstra a aplicação prática de **padrões de projeto fundament
 
 ##👥 Autores
 
-- **Lucas** 
-- **Luiz**
+- [Lucas](https://github.com/LucasLins13/)
+- [Luiz](https://github.com/luizcodedthat/)
