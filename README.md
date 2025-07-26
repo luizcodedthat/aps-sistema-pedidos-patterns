@@ -169,7 +169,7 @@ Este projeto busca a aplicação prática de **padrões de projeto fundamentais*
 - Reutilização de lógica com fábricas e interfaces  
 - Estruturação de código orientado a objetos
 
-##👥 Autores
+## 👥 Autores
 
 - [Lucas](https://github.com/LucasLins13/)
 - [Luiz](https://github.com/luizcodedthat/)
